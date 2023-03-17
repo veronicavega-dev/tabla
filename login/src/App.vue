@@ -45,7 +45,7 @@
   
   
   <!-- Modal  y boton nuevo registro--> 
-  <button type="button" @click="limpiar() ;agregar()" class="btn btn-success" id="registro"  data-bs-toggle="modal" data-bs-target="#exampleModal " >Nuevo registro</button>
+  <button type="button" @click="limpiar()" class="btn btn-success" id="registro"  data-bs-toggle="modal" data-bs-target="#exampleModal ">Nuevo registro</button>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -76,12 +76,8 @@
               <label for="">Proveedor</label>
               <input v-model="proveedor" class="form-control" type="text" placeholder="...">
           </div>
-          <!-- <div v-if="valida !='' " style="width: 100%; background-color: darkred; margin-right: 20px;" class="text-center">
-            <span style="color:white" >{{ valida }}</span>
-          </div> -->
-            <!-- <div v-show="valid==true" style="width: 100%; background-color: darkred; margin-right: 20px;" class="text-center"> -->
+          
             <span v-if="valid===true" style="width: 100%; background-color: darkred;color:white">{{ valida }}</span>
-          <!-- </div>  -->
           <div  v-show="esfumar===true"  style="width: 100%; background-color: green; margin-right: 20px;" class="text-center">
             <span  style="color:black">{{ vero }}</span>
           </div>
@@ -89,8 +85,7 @@
         </div>
         <div class="modal-footer">
           <input v-if="bd==true"  type="button" value="guardar" class="btn btn-success"  @click="guardar(p,i)">
-          <button v-else @click="agregarValidar()" type="button" class="btn btn-success"    >Añadir</button> 
-          <!-- <button v-else @click="agregarValidar()" type="button" class="btn btn-success" data-bs-dismiss="modal"  >Añadir</button>  -->
+          <button v-else @click="agregarValidar()" type="button" class="btn btn-success">Añadir</button> 
         </div>
       </div>
     </div>
@@ -239,11 +234,9 @@
     }
   
       function agregarValidar (){
-        agregar()
-        console.log("entro a agregarValidar");
+        // agregar()
         if (agregar()=== true) {
-                  console.log("entro a agregarValidar");
-
+        console.log("entro a agregarValidar");
         productos.value.push(
         {
           nombre: nombre.value,
@@ -253,20 +246,16 @@
           proveedor: proveedor.value
         }
       )
-      console.log(productos.value+ "agrego");
       valida.value="Registro agregado"
       esfumar.value=true
       setTimeout(function(){
         esfumar.value=false
           }, 7000);
-  
-          limpiar()
         }
-
         if(agregar()=== false){
         console.log("nada");
       }
-    
+      limpiar()
     }return{
         productos,valid,cerrar,settime, habilitar,eliminar,editar,nombre,id,guardar,vero,probando,limpiar,agregar,guard,agregarValidar,
         precio,costo,cantidad,proveedor,estado,bd,valida,modal,esfumar
@@ -281,11 +270,14 @@
     h1{
       text-align: center;
       padding: 3%;
+      font-size: 8vh;
+      font-weight:900;
     }
     body{
     font-family: 'Comfortaa', cursive;
     font-family: 'PT Sans Narrow', sans-serif;
     font-family: 'Rubik', sans-serif;
+    background: rgb(189, 185, 185);
     }
     table{
       margin: auto;
